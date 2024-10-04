@@ -1,13 +1,12 @@
 import java.util.Date;
 
-public class Demande {
+public class Mission {
     private Date date;
     private String intitule;
     private Statut statut;
     private PersonneAidee aidee;
-    private PersonneOrganisation organisation = null;
-
-    public Demande(Date date, String intitule, PersonneAidee aidee){
+    private PersonneBenevole benevole = null;
+    public Mission(Date date, String intitule, PersonneAidee aidee){
         this.date = date;
         this.intitule = intitule;
         this.statut = Statut.EN_ATTENTE;
@@ -22,10 +21,6 @@ public class Demande {
         return intitule;
     }
 
-    public PersonneAidee getAidee() {
-        return aidee;
-    }
-
     public Statut getStatut() {
         return statut;
     }
@@ -34,7 +29,15 @@ public class Demande {
         this.statut = statut;
     }
 
-    public void setOrganisation(PersonneOrganisation organisation) {
-        this.organisation = organisation;
+    public PersonneAidee getAidee() {
+        return aidee;
+    }
+
+    public PersonneBenevole getBenevole() {
+        return benevole;
+    }
+
+    public void setBenevole(PersonneBenevole benevole) {
+        this.benevole = benevole;
     }
 }
