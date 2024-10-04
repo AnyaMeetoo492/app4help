@@ -37,4 +37,7 @@ public class Demande {
     public void setOrganisation(PersonneOrganisation organisation) {
         this.organisation = organisation;
     }
+    public PersonneOrganisation getOrganisation(){
+        return this.organisation;
+    }
 }
