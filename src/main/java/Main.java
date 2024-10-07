@@ -5,6 +5,8 @@ public class Main {
 
         // Connection à la base de donnée
         DatabaseHandler database = new DatabaseHandler();
-        Connection conn = database.connect();
+        database.connect();
+
+        PersonneAidee personne = new PersonneAidee("Rousseau", "Firmin", "6 Allee des sciences, 31400, Toulouse");
     }
 }

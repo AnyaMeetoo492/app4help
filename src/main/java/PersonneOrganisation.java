@@ -3,6 +3,7 @@ import java.util.Date;
 public class PersonneOrganisation extends Personne{
     public PersonneOrganisation(String nom, String prenom, String adresse) {
         super(nom, prenom, adresse);
+        DatabaseHandler.InsertOrganisation(nom,prenom,adresse);
     }
 
     public void ValiderDemande(Demande demande){

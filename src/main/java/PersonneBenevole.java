@@ -3,6 +3,7 @@ import java.util.Date;
 public class PersonneBenevole extends Personne{
     public PersonneBenevole(String nom, String prenom, String adresse) {
         super(nom, prenom, adresse);
+        DatabaseHandler.InsertBenevole(nom,prenom,adresse);
     }
     public void ValiderMission(Mission mission){
         mission.setBenevole(this);
