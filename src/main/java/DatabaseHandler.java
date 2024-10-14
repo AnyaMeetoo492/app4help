@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.Date;
 
 // Classe pour
 // - se connecter à la base de donnée
@@ -101,5 +102,10 @@ public class DatabaseHandler {
                 e.printStackTrace();
             }
         }
+    }
+
+    // Mission
+    public static void InsertDemande(Date date, String intitule, PersonneAidee aidee){
+
     }
 }
