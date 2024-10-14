@@ -2,5 +2,5 @@ public enum Statut {
     EN_ATTENTE,
     VALIDEE,
     REALISEE,
-    REJETEE
+    REJETEE//quand une demande est rejetée
 }
