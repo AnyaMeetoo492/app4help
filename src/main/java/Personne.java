@@ -4,6 +4,9 @@ public class Personne {
     private String adresse;
 
     public Personne(String nom, String prenom, String adresse) {
+        if (nom == null && prenom == null && adresse == null){
+            throw new IllegalArgumentException("Aucun champ ne peut être vide");
+        }
         if (nom == null || nom.trim().isEmpty()) {
             throw new IllegalArgumentException("Le nom ne peut pas être nul ou vide");
         }
