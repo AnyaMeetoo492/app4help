@@ -15,6 +15,7 @@ public class LoginPasswordGUI {
         loginField.setToolTipText("entrez votre identifiant");
         frame.getContentPane().add(loginField, BorderLayout.NORTH);
 
+
         JPasswordField passwordField = new JPasswordField();
         frame.getContentPane().add(passwordField, BorderLayout.CENTER);
 
