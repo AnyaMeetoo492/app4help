@@ -1,5 +1,7 @@
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 // Classe pour
 // - se connecter à la base de donnée
@@ -28,11 +30,15 @@ public class DatabaseHandler {
         // retourner la connection établie
     }
 
-    // Éxecuter une requête
+    /*
+    ================================================
+                    LES INSERTIONS
+    ================================================
+     */
 
     // Personne
-    public static int InsertPersonne(String nom, String prenom, String adresse) {
-        String insertStatement = "INSERT INTO Personne (nom, prenom, adresse) VALUES (?, ?, ?)";
+    public static int InsertPersonne(String nom, String prenom, String adresse, String password) {
+        String insertStatement = "INSERT INTO Personne (nom, prenom, adresse, password) VALUES (?, ?, ?, ?)";
 
         // Use Statement.RETURN_GENERATED_KEYS to retrieve the auto-incremented key
         try (PreparedStatement stmt = conn.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS)) {
@@ -40,6 +46,7 @@ public class DatabaseHandler {
             stmt.setString(1, nom);
             stmt.setString(2, prenom);
             stmt.setString(3, adresse);
+            stmt.setString(4, password);
 
             // Execute the update
             stmt.executeUpdate();
@@ -57,8 +64,8 @@ public class DatabaseHandler {
     }
 
     // Aidee
-    public static void InsertAidee(String nom, String prenom, String adresse){
-        int personneID = InsertPersonne(nom, prenom, adresse);
+    public static void InsertAidee(String nom, String prenom, String adresse, String password){
+        int personneID = InsertPersonne(nom, prenom, adresse, password);
         System.out.println(personneID);
         if (personneID != -1){
             String insertStatement = "INSERT INTO PersonneAidee (idPersonneAidee) VALUES (?)";
@@ -73,8 +80,8 @@ public class DatabaseHandler {
     }
 
     // Benevole
-    public static void InsertBenevole(String nom, String prenom, String adresse){
-        int personneID = InsertPersonne(nom, prenom, adresse);
+    public static void InsertBenevole(String nom, String prenom, String adresse, String password){
+        int personneID = InsertPersonne(nom, prenom, adresse, password);
         System.out.println(personneID);
         if (personneID != -1){
             String insertStatement = "INSERT INTO PersonneBenevole (idPersonneBenevole) VALUES (?)";
@@ -89,8 +96,8 @@ public class DatabaseHandler {
     }
 
     // Organisation
-    public static void InsertOrganisation(String nom, String prenom, String adresse){
-        int personneID = InsertPersonne(nom, prenom, adresse);
+    public static void InsertOrganisation(String nom, String prenom, String adresse, String password){
+        int personneID = InsertPersonne(nom, prenom, adresse, password);
         System.out.println(personneID);
         if (personneID != -1){
             String insertStatement = "INSERT INTO PersonneOrganisation (idPersonneOrganisation) VALUES (?)";
@@ -105,7 +112,67 @@ public class DatabaseHandler {
     }
 
     // Mission
-    public static void InsertDemande(Date date, String intitule, PersonneAidee aidee){
+    public static int InsertDemande(Date date, String intitule, PersonneAidee aidee){
+        String insertStatement = "INSERT INTO Demande (date, intitule, aidee) VALUES (?, ?, ?)";
+
+        // Use Statement.RETURN_GENERATED_KEYS to retrieve the auto-incremented key
+        try (PreparedStatement stmt = conn.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS)) {
+            // Set parameters for the query
+            stmt.setString(1, String.valueOf(date));
+            stmt.setString(2, intitule);
+            stmt.setString(3, String.valueOf(aidee));
+
+            // Execute the update
+            stmt.executeUpdate();
+            System.out.println("New demande inserted successfully.");
+
+            // Retrieve the generated idPersonne
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1); // Return the generated idPersonne
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // Return -1 si insert fail
+    }
+
+    /*
+    ================================================
+                    LES SELECTS
+    ================================================
+     */
+
+    // Personne - on récupère la liste des personnes
+    public static List<List<String>> ListePersonne(){
+        List<List<String>> Liste = new ArrayList<>();
+
+        // Query to retrieve all necessary fields in a single query for better efficiency
+        String query = "SELECT idPersonne, nom, prenom, adresse, password FROM Personne ORDER BY idPersonne;";
+
+        try (Statement statement = conn.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            // Iterate over the result set and add each person's details to the list
+            while (resultSet.next()) {
+                List<String> personne = new ArrayList<>();
+
+
+                personne.add(resultSet.getString("idPersonne"));
+                personne.add(resultSet.getString("nom"));
+                personne.add(resultSet.getString("prenom"));
+                personne.add(resultSet.getString("adresse"));
+                personne.add(resultSet.getString("password"));
+
+                Liste.add(personne);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return personList;
+    }
+
 
     }
 }

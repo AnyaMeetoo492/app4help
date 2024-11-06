@@ -1,9 +1,9 @@
 import java.util.Date;
 
 public class PersonneOrganisation extends Personne{
-    public PersonneOrganisation(String nom, String prenom, String adresse) {
-        super(nom, prenom, adresse);
-        DatabaseHandler.InsertOrganisation(nom,prenom,adresse);
+    public PersonneOrganisation(String nom, String prenom, String adresse, String password) {
+        super(nom, prenom, adresse, password);
+        DatabaseHandler.InsertOrganisation(nom,prenom,adresse,password);
     }
 
     public void ValiderDemande(Demande demande){

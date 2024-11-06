@@ -2,8 +2,9 @@ public class Personne {
     private String nom;
     private String prenom;
     private String adresse;
+    private String password;
 
-    public Personne(String nom, String prenom, String adresse) {
+    public Personne(String nom, String prenom, String adresse, String password) {
         if (nom == null && prenom == null && adresse == null){
             throw new IllegalArgumentException("Aucun champ ne peut être vide");
         }
@@ -16,10 +17,14 @@ public class Personne {
         if (adresse == null || adresse.trim().isEmpty()) {
             throw new IllegalArgumentException("L'adresse ne peut pas être nulle ou vide");
         }
+        if (password == null || password.trim().isEmpty()){
+            throw new IllegalArgumentException("Le mot de passe ne peut pas être vide");
+        }
 
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
+        this.password = password;
     }
 
     public String getNom() {
@@ -32,5 +37,9 @@ public class Personne {
 
     public String getAdresse() {
         return adresse;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

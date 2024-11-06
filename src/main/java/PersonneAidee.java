@@ -1,10 +1,10 @@
 import java.util.Date;
 
 public class PersonneAidee extends Personne{
-    public PersonneAidee(String nom, String prenom, String adresse) {
-        super(nom, prenom, adresse);
+    public PersonneAidee(String nom, String prenom, String adresse, String password) {
+        super(nom, prenom, adresse, password);
         // Insérer dans la table PersonneAidee
-        DatabaseHandler.InsertAidee(nom, prenom, adresse);
+        DatabaseHandler.InsertAidee(nom, prenom, adresse,password);
     }
 
     public void CreerDemande(Date date, String intitule, PersonneAidee aidee){
