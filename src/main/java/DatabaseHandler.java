@@ -171,4 +171,100 @@ public class DatabaseHandler {
 
         return Liste;
     }
+
+    public static List<List<String>> ListeAidee(){
+        List<List<String>> Liste = new ArrayList<>();
+
+        // Query to retrieve all necessary fields in a single query for better efficiency
+        String query = "SELECT idPersonne, nom, prenom, adresse, password " +
+                "FROM Personne " +
+                "INNER JOIN PersonneAidee ON Personne.idPersonne=PersonneAidee.idPersonneAidee " +
+                "ORDER BY idPersonne;";
+
+        try (Statement statement = conn.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            // Iterate over the result set and add each person's details to the list
+            while (resultSet.next()) {
+                List<String> personne = new ArrayList<>();
+
+
+                personne.add(resultSet.getString("idPersonne"));
+                personne.add(resultSet.getString("nom"));
+                personne.add(resultSet.getString("prenom"));
+                personne.add(resultSet.getString("adresse"));
+                personne.add(resultSet.getString("password"));
+
+                Liste.add(personne);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return Liste;
+    }
+
+    public static List<List<String>> ListeBenevole(){
+        List<List<String>> Liste = new ArrayList<>();
+
+        // Query to retrieve all necessary fields in a single query for better efficiency
+        String query = "SELECT idPersonne, nom, prenom, adresse, password " +
+                "FROM Personne " +
+                "INNER JOIN PersonneBenevole ON Personne.idPersonne=PersonneBenevole.idPersonneBenevole " +
+                "ORDER BY idPersonne;";
+
+        try (Statement statement = conn.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            // Iterate over the result set and add each person's details to the list
+            while (resultSet.next()) {
+                List<String> personne = new ArrayList<>();
+
+
+                personne.add(resultSet.getString("idPersonne"));
+                personne.add(resultSet.getString("nom"));
+                personne.add(resultSet.getString("prenom"));
+                personne.add(resultSet.getString("adresse"));
+                personne.add(resultSet.getString("password"));
+
+                Liste.add(personne);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return Liste;
+    }
+
+    public static List<List<String>> ListeOrganisation(){
+        List<List<String>> Liste = new ArrayList<>();
+
+        // Query to retrieve all necessary fields in a single query for better efficiency
+        String query = "SELECT idPersonne, nom, prenom, adresse, password " +
+                "FROM Personne " +
+                "INNER JOIN PersonneOrganisation ON Personne.idPersonne=PersonneOrganisation.idPersonneOrganisation " +
+                "ORDER BY idPersonne;";
+
+        try (Statement statement = conn.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            // Iterate over the result set and add each person's details to the list
+            while (resultSet.next()) {
+                List<String> personne = new ArrayList<>();
+
+
+                personne.add(resultSet.getString("idPersonne"));
+                personne.add(resultSet.getString("nom"));
+                personne.add(resultSet.getString("prenom"));
+                personne.add(resultSet.getString("adresse"));
+                personne.add(resultSet.getString("password"));
+
+                Liste.add(personne);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return Liste;
+    }
 }
