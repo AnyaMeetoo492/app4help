@@ -27,7 +27,6 @@ public class DatabaseHandler {
             System.out.println("Failed to connect to the database.");
             e.printStackTrace();
         }
-        // retourner la connection établie
     }
 
     /*
@@ -170,9 +169,6 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
 
-        return personList;
-    }
-
-
+        return Liste;
     }
 }
