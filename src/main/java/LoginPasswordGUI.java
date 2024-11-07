@@ -47,14 +47,15 @@ public class LoginPasswordGUI {
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                DatabaseHandler.connect();
                 if (isSeeker){
-                    new PersonneAidee(nameField.getText(),firstnameField.getText(),adressField.getText(),"1234");
+                    new PersonneAidee(nameField.getText(),firstnameField.getText(),adressField.getText(),String.valueOf(passwordField.getPassword()));
                 }
                 if (isVolunteer){
-                    new PersonneBenevole(nameField.getText(),firstnameField.getText(),adressField.getText(),"1234");
+                    new PersonneBenevole(nameField.getText(),firstnameField.getText(),adressField.getText(),String.valueOf(passwordField.getPassword()));
                 }
                 if (isOrganisation){
-                    new PersonneOrganisation(nameField.getText(),firstnameField.getText(),adressField.getText(),"1234");
+                    new PersonneOrganisation(nameField.getText(),firstnameField.getText(),adressField.getText(),String.valueOf(passwordField.getPassword()));
                 }
             }
         });
