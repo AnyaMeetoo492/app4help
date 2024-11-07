@@ -8,6 +8,7 @@ public class GUI {
 
 
         JFrame frame = new JFrame("Greeting Frame");
+        frame.setResizable(false);
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JButton connectButton = new JButton("Connect");

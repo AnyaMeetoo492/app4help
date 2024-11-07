@@ -10,7 +10,7 @@ public class SelectType {
 
         JFrame frame = new JFrame("Select your status");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        frame.setResizable(false);
 
 
 
