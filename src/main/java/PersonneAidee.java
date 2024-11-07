@@ -7,8 +7,8 @@ public class PersonneAidee extends Personne{
         DatabaseHandler.InsertAidee(nom, prenom, adresse,password);
     }
 
-    public void CreerDemande(Date date, String intitule, PersonneAidee aidee){
+    public void CreerDemande(Date dateDemande, String intitule, PersonneAidee aidee){
         // Créer nouvelle demande et automatiquement rajoute dans table Demande
-        Demande demande = new Demande(date, intitule, aidee);
+        Demande demande = new Demande(dateDemande, intitule, aidee);
     }
 }

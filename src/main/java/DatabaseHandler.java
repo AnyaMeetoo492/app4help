@@ -111,15 +111,16 @@ public class DatabaseHandler {
     }
 
     // Mission
-    public static int InsertDemande(Date date, String intitule, PersonneAidee aidee){
-        String insertStatement = "INSERT INTO Demande (date, intitule, aidee) VALUES (?, ?, ?)";
+    public static int InsertDemande(Date dateDemande, Date dateValidation, String intitule, PersonneAidee aidee){
+        String insertStatement = "INSERT INTO Demande (intitule, aidee, dateDemande, dateValidation) VALUES (?, ?, ?, ?)";
 
         // Use Statement.RETURN_GENERATED_KEYS to retrieve the auto-incremented key
         try (PreparedStatement stmt = conn.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS)) {
             // Set parameters for the query
-            stmt.setString(1, String.valueOf(date));
-            stmt.setString(2, intitule);
-            stmt.setString(3, String.valueOf(aidee));
+            stmt.setString(1, intitule);
+            stmt.setString(2, String.valueOf(aidee));
+            stmt.setString(3, String.valueOf(dateDemande));
+            stmt.setString(4, String.valueOf(dateValidation));
 
             // Execute the update
             stmt.executeUpdate();

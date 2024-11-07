@@ -1,14 +1,15 @@
 import java.util.Date;
 
 public class Mission {
-    private Date date;
+    private Date dateDebut;
+    private Date dateFin;
     private String intitule;
     private Statut statut;
     private PersonneAidee aidee;
-    private PersonneBenevole benevole = null;
-    public Mission(Date date, String intitule, PersonneAidee aidee) {
-        if (date == null) {
-            throw new IllegalArgumentException("La date ne peut pas être nulle");
+    private PersonneBenevole benevole;
+    public Mission(Date dateDebut, String intitule, PersonneAidee aidee) {
+        if (dateDebut == null) {
+            throw new IllegalArgumentException("La date de début ne peut pas être nulle");
         }
         if (intitule == null || intitule.trim().isEmpty()) {
             throw new IllegalArgumentException("L'intitulé ne peut pas être nul ou vide");
@@ -16,20 +17,30 @@ public class Mission {
         if (aidee == null) {
             throw new IllegalArgumentException("La personne aidée ne peut pas être nulle");
         }
-        this.date = date;
+        this.dateDebut = dateDebut;
+        this.dateFin = null;
         this.intitule = intitule;
         this.statut = Statut.EN_ATTENTE;
         this.aidee = aidee;
+        this.benevole = null;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+    public Date getDateFin() {
+        return dateFin;
     }
 
+    public void setDateFin(Date fin){
+        if (fin == null) {
+            throw new IllegalArgumentException("La date de fin ne peut pas être nulle");
+        }
+        this.dateFin = fin;
+    }
     public String getIntitule() {
         return intitule;
     }
-
     public Statut getStatut() {
         return statut;
     }
