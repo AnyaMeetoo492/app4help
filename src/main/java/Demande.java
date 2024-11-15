@@ -7,6 +7,7 @@ public class Demande {
     private Statut statut;
     private PersonneAidee aidee;
     private PersonneOrganisation organisation;
+    private String motif;
 
     public Demande(Date dateDemande, String intitule, PersonneAidee aidee) {
         if (dateDemande == null) {
@@ -25,6 +26,9 @@ public class Demande {
         this.statut = Statut.EN_ATTENTE;
         this.aidee = aidee;
         this.organisation = null;
+        this.motif = null;
+
+        System.out.println(DatabaseHandler.InsertDemande(this.dateDemande, this.dateValidation, this.intitule, this.statut, this.aidee, this.organisation, this.motif));
     }
 
     public Date getDateDemande() {

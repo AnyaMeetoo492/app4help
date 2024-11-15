@@ -62,6 +62,28 @@ public class DatabaseHandler {
         return -1; // Return -1 si insert fail
     }
 
+    public static String GetIDPersonne(Personne personne){
+        String id = null;
+        String query = "SELECT idPersonne FROM Personne WHERE nom = ?";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+
+            // Set the parameter for the query
+            preparedStatement.setString(1, personne.getNom());
+
+            // Execute the query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Process the result
+            while (resultSet.next()) {
+                id = resultSet.getString("idPersonne");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
     // Aidee
     public static void InsertAidee(String nom, String prenom, String adresse, String password){
         int personneID = InsertPersonne(nom, prenom, adresse, password);
@@ -111,16 +133,36 @@ public class DatabaseHandler {
     }
 
     // Mission
-    public static int InsertDemande(Date dateDemande, Date dateValidation, String intitule, PersonneAidee aidee){
-        String insertStatement = "INSERT INTO Demande (intitule, aidee, dateDemande, dateValidation) VALUES (?, ?, ?, ?)";
+    public static int InsertDemande(Date dateDemande, Date dateValidation, String intitule, Statut statut, PersonneAidee aidee, PersonneOrganisation organisation, String motif){
+        String idAidee = null;
+        String idOrganisation = null;
+        Date dateVal = null;
+
+        // il faut récup l'id de Aidee et Organisation pour pouvoir ajouter dans le tableau
+        if (aidee != null){
+            idAidee = GetIDPersonne(aidee);
+        }
+
+        if (organisation != null){
+            idOrganisation = GetIDPersonne(organisation);
+        }
+
+        if (dateValidation!=null){
+            dateVal = new java.sql.Date(dateValidation.getTime());
+        }
+
+        String insertStatement = "INSERT INTO Demande (intitule, statut, idAidee, idOrganisation, motif, dateDemande, dateValidation) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         // Use Statement.RETURN_GENERATED_KEYS to retrieve the auto-incremented key
         try (PreparedStatement stmt = conn.prepareStatement(insertStatement, Statement.RETURN_GENERATED_KEYS)) {
-            // Set parameters for the query
             stmt.setString(1, intitule);
-            stmt.setString(2, String.valueOf(aidee));
-            stmt.setString(3, String.valueOf(dateDemande));
-            stmt.setString(4, String.valueOf(dateValidation));
+            stmt.setString(2, statut.toString());
+            stmt.setString(3, idAidee);
+            stmt.setString(4, idOrganisation);
+            stmt.setString(5, motif);
+            stmt.setDate(6, new java.sql.Date(dateDemande.getTime()));
+            stmt.setDate(7, (java.sql.Date) dateVal);
+
 
             // Execute the update
             stmt.executeUpdate();
