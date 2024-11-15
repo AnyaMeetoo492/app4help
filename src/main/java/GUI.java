@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.*;
 public class GUI {
 
@@ -43,7 +45,21 @@ public class GUI {
             }
         });
 
+        JButton tempoButton = new JButton("DemandeTempo");
+        frame.getContentPane().add(tempoButton, BorderLayout.CENTER);
+        tempoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
 
+
+                        new MesDemandes().createAndShowGUI();
+                    }
+                });
+            }
+        });
 
 
         // make window's dimension fit its content
