@@ -1,6 +1,9 @@
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,12 +27,30 @@ public class MesDemandes {
         };
 
         JTable table = new JTable(tableModel);
-        JFrame frame = new JFrame("Données de la base");
+        JFrame frame = new JFrame("Mes Demandes");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
         JScrollPane scrollPane = new JScrollPane(table);
         frame.add(scrollPane);
+
+        JButton newDemandeButton = new JButton("new");
+        frame.getContentPane().add(newDemandeButton, BorderLayout.SOUTH);
+
+        newDemandeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        new DemandeGUI().createAndShowGUI();
+                    }
+                });
+                //new SelectType().createAndShowGUI();
+            }
+        });
+
+
 
         frame.pack();
         frame.setSize(800, 600);

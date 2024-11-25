@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.*;
 public class GUI {
 
-    private static void createAndShowGUI() {
+    public static void createAndShowGUI() {
 
 
         JFrame frame = new JFrame("Greeting Frame");
