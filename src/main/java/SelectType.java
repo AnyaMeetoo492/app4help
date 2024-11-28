@@ -23,7 +23,7 @@ public class SelectType {
                 frame.dispose();
                 javax.swing.SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        new LoginPasswordGUI().createAndShowGUI(true,false,false);
+                        new RegisterGUI().createAndShowGUI(true,false,false);
                     }
                 });
             }
@@ -37,7 +37,7 @@ public class SelectType {
                 frame.dispose();
                 javax.swing.SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        new LoginPasswordGUI().createAndShowGUI(false,true,false);
+                        new RegisterGUI().createAndShowGUI(false,true,false);
                     }
                 });
             }
@@ -51,7 +51,7 @@ public class SelectType {
                 frame.dispose();
                 javax.swing.SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        new LoginPasswordGUI().createAndShowGUI(false,false,true);
+                        new RegisterGUI().createAndShowGUI(false,false,true);
                     }
                 });
             }

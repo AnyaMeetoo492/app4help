@@ -2,7 +2,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginPasswordGUI {
+
+
+public class RegisterGUI {
+
     public void createAndShowGUI(boolean isSeeker, boolean isVolunteer, boolean isOrganisation){
 
         JFrame frame = new JFrame("Select your status");
@@ -18,8 +21,12 @@ public class LoginPasswordGUI {
         JTextField nameField = new JTextField("Dupont");
         nameField.setToolTipText("Entrez votre nom");
         panel.add(nameField);
+        // Champ de texte pour l'adresse
+        JTextField adressField = new JTextField("5 rue des champs 31400 Toulouse");
+        adressField.setToolTipText("Entrez votre adresse");
+        panel.add(adressField);
         // Champ de texte pour le mot de passe
-        JPasswordField passwordField = new JPasswordField("******");
+        JPasswordField passwordField = new JPasswordField("**");
         passwordField.setToolTipText("Entrez votre mot de passe");
         panel.add(passwordField);
         // Bouton de validation
@@ -35,24 +42,18 @@ public class LoginPasswordGUI {
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (isInDataBasepersonne(firstnameField.getText(),nameField.getText(),String.valueOf(passwordField.getPassword()))){
-                    frame.dispose();
-                    PersonneAidee personneAidee = selectPersonne(firstnameField.getText(),nameField.getText(),String.valueOf(passwordField.getPassword()));
-                    DatabaseHandler.connect();
-                    if (isSeeker){
-                        new MesDemandesGUI().createAndShowGUI(personneAidee);//affiche les demandes de l'utilisateur aidé
-                    }
-                    if (isVolunteer){
-                        //affiche les mission disponibles
-                    }
-                    if (isOrganisation){
-                        //affiche les demandes disponibles
-                    }
+                DatabaseHandler.connect();
+                frame.dispose();
+                if (isSeeker){
+                    PersonneAidee personneAidee = new PersonneAidee(nameField.getText(),firstnameField.getText(),adressField.getText(),String.valueOf(passwordField.getPassword()));
+                    new MesDemandesGUI().createAndShowGUI(personneAidee);
                 }
-                else {
-                    //printf
+                if (isVolunteer){
+                    new PersonneBenevole(nameField.getText(),firstnameField.getText(),adressField.getText(),String.valueOf(passwordField.getPassword()));
                 }
-
+                if (isOrganisation){
+                    new PersonneOrganisation(nameField.getText(),firstnameField.getText(),adressField.getText(),String.valueOf(passwordField.getPassword()));
+                }
             }
         });
 
@@ -60,4 +61,27 @@ public class LoginPasswordGUI {
         // Display the window.
         frame.setVisible(true);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -4,19 +4,31 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-public class MesDemandes {
+public class MesDemandesGUI {
 
-    public MesDemandes() {
-    }
-    public void createAndShowGUI(){
+    public void createAndShowGUI(PersonneAidee personneAidee){
 
-        String[] columnNames = { "id", "nom", "prenom","adresse" }; // Noms des colonnes
+        ArrayList<String> listeColumns = new ArrayList<String>(); // Noms des colonnes
 
+        boolean showIdPersonne = false;
+        if (showIdPersonne) listeColumns.add("idPersonne");
+
+        boolean showNom = true;
+        if (showNom) listeColumns.add("nom");
+        boolean showPrenom = true;
+        if (showPrenom) listeColumns.add("prenom");
+        boolean showAdresse = false;
+        if (showAdresse) listeColumns.add("adresse");
+        boolean showPassword = false;
+        if (showPassword) listeColumns.add("password");
+        String[] columnNames = listeColumns.toArray(new String[0]);
         DatabaseHandler.connect();
-        List<List<String>> demandes = DatabaseHandler.ListePersonne();
+        List<List<String>> demandes = DatabaseHandler.ListePersonneChoix(showIdPersonne,showNom,showPrenom,showAdresse,showPassword);
+
+
 
         //JTable table = new JTable(convertListToArray(demandes),columnNames);
         DefaultTableModel tableModel = new DefaultTableModel(convertListToArray(demandes), columnNames) {
@@ -32,10 +44,12 @@ public class MesDemandes {
 
 
         JScrollPane scrollPane = new JScrollPane(table);
-        frame.add(scrollPane);
+        frame.add(scrollPane,BorderLayout.NORTH);
 
+        JPanel panelSouth = new JPanel();
+        panelSouth.setLayout(new BoxLayout(panelSouth, BoxLayout.Y_AXIS));
         JButton newDemandeButton = new JButton("new");
-        frame.getContentPane().add(newDemandeButton, BorderLayout.SOUTH);
+        panelSouth.add(newDemandeButton, BorderLayout.CENTER);
 
         newDemandeButton.addActionListener(new ActionListener() {
             @Override
@@ -43,13 +57,29 @@ public class MesDemandes {
                 frame.dispose();
                 javax.swing.SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        new DemandeGUI().createAndShowGUI();
+                        new DemandeGUI().createAndShowGUI(personneAidee);
                     }
                 });
                 //new SelectType().createAndShowGUI();
             }
         });
 
+        JButton quitButton = new JButton("quit");
+        panelSouth.add(quitButton);
+
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        frame.dispose();
+                    }
+                });
+                //new SelectType().createAndShowGUI();
+            }
+        });
+        frame.add(panelSouth);
 
 
         frame.pack();
