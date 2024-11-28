@@ -15,12 +15,12 @@ public class Main {
 //        Demande demande = new Demande(date, "çA marche", new PersonneAidee("Anya333", "Meetoo333", "6 Allee", "333"));
 
         // Ajout d'une personne
-        List<List<String>> ListePersonne = DatabaseHandler.ListePersonneChoix(true,true, true, true, false);
-        //List<List<String>> ListePersonne = database.ListePersonne();
-        for (List<String> personne : ListePersonne){
-            System.out.println(personne);
-        }
-
+        //List<List<String>> ListePersonne = DatabaseHandler.ListePersonneChoix(true,true, true, true, false);
+        //ist<List<String>> ListePersonne = DatabaseHandler.ListeDemande();
+//        for (List<String> personne : ListePersonne){
+//            System.out.println(personne);
+//        }
+        database.InsertPersonne("Dupont", "Louis", "6 rue des champs 31400 Toulouse", "1234");
 
     }
 }
