@@ -461,11 +461,11 @@ public class DatabaseHandler {
         return personList;
     }
 
-    public static boolean isInDatabase(Personne personne) {
+    public static boolean isInDatabase(String nom, String prenom, String password) {
         List<List<String>> listePersonne = ListePersonne();
         if (!listePersonne.isEmpty()) {
             for (List<String> p : listePersonne) {
-                if (p.get(1).equals(personne.getNom()) && p.get(2).equals(personne.getPrenom()) && p.get(3).equals(personne.getAdresse())) {
+                if (p.get(1).equals(nom) && p.get(2).equals(prenom) && p.get(3).equals(password)) {
                     return true;
                 }
             }
