@@ -466,7 +466,7 @@ public class DatabaseHandler {
         List<List<String>> listePersonne = ListePersonne();
         if (!listePersonne.isEmpty()) {
             for (List<String> p : listePersonne) {
-                if (p.get(1).equals(nom) && p.get(2).equals(prenom) && p.get(4).equals(password)) {
+                if (p.get(1).equals(nom) && p.get(2).equals(prenom) && p.get(3).equals(password)) {
                     return true;
                 }
             }
