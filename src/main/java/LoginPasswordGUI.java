@@ -35,15 +35,20 @@ public class LoginPasswordGUI {
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (isInDataBasepersonne(firstnameField.getText(),nameField.getText(),String.valueOf(passwordField.getPassword()))){
+
+                DatabaseHandler.connect();
+                if (DatabaseHandler.isInDatabase(firstnameField.getText(),nameField.getText(),String.valueOf(passwordField.getPassword()))){
                     frame.dispose();
-                    PersonneAidee personneAidee = selectPersonne(firstnameField.getText(),nameField.getText(),String.valueOf(passwordField.getPassword()));
-                    DatabaseHandler.connect();
+                    Personne user = DatabaseHandler.getPersonneWithLogin(firstnameField.getText(),nameField.getText(),String.valueOf(passwordField.getPassword()));
+
+
                     if (isSeeker){
+                        PersonneAidee personneAidee = new PersonneAidee(firstnameField.getText(),nameField.getText(),user.getAdresse(),String.valueOf(passwordField.getPassword()));
                         new MesDemandesGUI().createAndShowGUI(personneAidee);//affiche les demandes de l'utilisateur aidé
                     }
                     if (isVolunteer){
-                        //affiche les mission disponibles
+                        PersonneAidee personneAidee = new PersonneAidee(firstnameField.getText(),nameField.getText(),user.getAdresse(),String.valueOf(passwordField.getPassword()));
+                        new MesDemandesGUI().createAndShowGUI(personneAidee);//affiche les mission disponibles
                     }
                     if (isOrganisation){
                         //affiche les demandes disponibles
