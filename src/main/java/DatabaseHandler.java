@@ -425,6 +425,8 @@ public class DatabaseHandler {
 
         return Liste;
     }
+    //TODO : boolean isSeeker(Personne user); boolean isOrganisation(Personne user); boolean isVolunteer(Personne user);
+
     public static List<List<String>> ListePersonneChoix(boolean showIdPersonne, boolean showNom, boolean showPrenom, boolean showAdresse, boolean showPassword) {
         List<List<String>> personList = new ArrayList<>();
         List<String> selectedColumns = new ArrayList<>();

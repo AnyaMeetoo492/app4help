@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.*;
 public class GUI {
 
-    private static void createAndShowGUI() {
+    public static void createAndShowGUI() {
 
 
         JFrame frame = new JFrame("Greeting Frame");
@@ -45,21 +45,21 @@ public class GUI {
             }
         });
 
-        JButton tempoButton = new JButton("DemandeTempo");
-        frame.getContentPane().add(tempoButton, BorderLayout.CENTER);
-        tempoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-
-
-                        new MesDemandes().createAndShowGUI();
-                    }
-                });
-            }
-        });
+//        JButton tempoButton = new JButton("DemandeTempo");
+//        frame.getContentPane().add(tempoButton, BorderLayout.CENTER);
+//        tempoButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                frame.dispose();
+//                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+//                    public void run() {
+//
+//
+//                        new MesDemandesGUI().createAndShowGUI();
+//                    }
+//                });
+//            }
+//        });
 
 
         // make window's dimension fit its content

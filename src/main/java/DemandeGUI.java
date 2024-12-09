@@ -1,12 +1,36 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 
 public class DemandeGUI extends JPanel {
-    public DemandeGUI(List<String> row){
-        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        for (String value : row) {  // Pour chaque valeur dans la ligne
-            this.add(new JLabel(value));
-        }
+    public DemandeGUI(){
+
+    }
+    public static void createAndShowGUI(PersonneAidee personneAidee){
+        JFrame frame = new JFrame("Create your query");
+
+        JButton validateButton = new JButton("Validate");
+        frame.add(validateButton);
+        frame.pack();
+        frame.setVisible(true);
+        validateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new Demande(new Date(),"",personneAidee);
+            }
+        });
+
+
+
+
+
+
+
+
+
     }
 
 
