@@ -51,6 +51,9 @@ public class Mission {
         if (fin == null) {
             throw new IllegalArgumentException("La date de fin ne peut pas être nulle");
         }
+        if (this.statut == Statut.EN_ATTENTE) {
+            throw new IllegalArgumentException("La mission n'a pas encore été validée");
+        }
         this.dateFin = fin;
         DatabaseHandler.ChangeDateFinMission(idMission, dateFin);
     }

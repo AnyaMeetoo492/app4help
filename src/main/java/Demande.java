@@ -1,3 +1,4 @@
+import javax.lang.model.element.NestingKind;
 import java.util.Date;
 
 public class Demande {
@@ -60,12 +61,16 @@ public class Demande {
         this.dateValidation = validation;
         DatabaseHandler.ChangeDateValidationDemande(idDemande,dateValidation);
     }
-    public void setStatut(Statut statut) {
+    public void setStatut(Statut statut, String motif) {
         if (statut == null) {
             throw new IllegalArgumentException("Le statut ne peut pas être nul");
         }
         this.statut = statut;
         DatabaseHandler.ChangeStatutDemande(idDemande,statut);
+
+        if (statut==Statut.REJETEE){
+            setMotif(motif);
+        }
     }
     public void setOrganisation(PersonneOrganisation organisation) {
         if (organisation == null) {
@@ -73,6 +78,13 @@ public class Demande {
         }
         this.organisation = organisation;
         DatabaseHandler.ChangeOrganisationDemande(idDemande,organisation);
+    }
+    public void setMotif(String motif) {
+        if (motif == null || motif.trim().isEmpty()) {
+            throw new IllegalArgumentException("Le motif ne peut pas être nul ou vide");
+        }
+        this.motif = motif;
+        DatabaseHandler.ChangeMotifDemande(idDemande,motif);
     }
 
 }

@@ -425,7 +425,6 @@ public class DatabaseHandler {
 
         return Liste;
     }
-
     public static List<List<String>> ListePersonneChoix(boolean showIdPersonne, boolean showNom, boolean showPrenom, boolean showAdresse, boolean showPassword) {
         List<List<String>> personList = new ArrayList<>();
         List<String> selectedColumns = new ArrayList<>();
@@ -886,5 +885,23 @@ public class DatabaseHandler {
         }
 
         return liste;
+    }
+
+    public static void ChangeMotifDemande(int idDemande, String motif) {
+        String updateStatement = "UPDATE Demande SET motif = ? WHERE idDemande = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(updateStatement)) {
+            stmt.setString(1, motif);
+            stmt.setInt(2, idDemande);
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Motif de la demande mis à jour avec succès.");
+            } else {
+                System.out.println("Aucune ligne n'a été mise à jour. Veuillez vérifier l'idDemande.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

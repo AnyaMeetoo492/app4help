@@ -8,7 +8,7 @@ public class PersonneOrganisation extends Personne{
 
     public void ValiderDemande(Demande demande){
         demande.setOrganisation(this);
-        demande.setStatut(Statut.VALIDEE);
+        demande.setStatut(Statut.VALIDEE, "Demande validée par l'organisation");
 
         // Demander à l'orga de donner la date de la mission et son intitulé
         Date date = null;
