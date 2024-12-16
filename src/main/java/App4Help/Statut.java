@@ -1,3 +1,5 @@
+package App4Help;
+
 public enum Statut {
     EN_ATTENTE,
     VALIDEE,

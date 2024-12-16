@@ -1,3 +1,8 @@
+package Views;
+
+import App4Help.DatabaseHandler;
+import App4Help.PersonneAidee;
+import Views.DemandeGUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -9,24 +14,36 @@ import java.util.List;
 
 public class MesDemandesGUI {
 
-    public void createAndShowGUI(PersonneAidee personneAidee){
+    public static void createAndShowGUI(PersonneAidee personneAidee){
 
         ArrayList<String> listeColumns = new ArrayList<String>(); // Noms des colonnes
 
-        boolean showIdPersonne = false;
-        if (showIdPersonne) listeColumns.add("idPersonne");
+        boolean showIdDemande = false;
+        if (showIdDemande) listeColumns.add("showIdDemande");
+        boolean showDateDemande = true;
+        if (showDateDemande) listeColumns.add("showDateDemande");
+        boolean showDateValidation = false;
+        if (showDateValidation) listeColumns.add("showDateValidation");
+        boolean showIntitule = true;
+        if (showIntitule) listeColumns.add("showIntitule");
+        boolean showNomAidee = true;
+        if (showNomAidee) listeColumns.add("showNomAidee");
+        boolean showPrenomAidee = true;
+        if (showPrenomAidee) listeColumns.add("showPrenomAidee");
+        boolean showStatut = false;
+        if (showStatut) listeColumns.add("showStatut");
+        boolean showNomOrganisation = false;
+        if (showNomOrganisation) listeColumns.add("showNomOrganisation");
+        boolean showPrenomOrganisation = false;
+        if (showPrenomOrganisation) listeColumns.add("showPrenomOrganisation");
+        boolean showMotif = false;
+        if (showMotif) listeColumns.add("showMotif");
 
-        boolean showNom = true;
-        if (showNom) listeColumns.add("nom");
-        boolean showPrenom = true;
-        if (showPrenom) listeColumns.add("prenom");
-        boolean showAdresse = false;
-        if (showAdresse) listeColumns.add("adresse");
-        boolean showPassword = false;
-        if (showPassword) listeColumns.add("password");
         String[] columnNames = listeColumns.toArray(new String[0]);
         DatabaseHandler.connect();
-        List<List<String>> demandes = DatabaseHandler.ListePersonneChoix(showIdPersonne,showNom,showPrenom,showAdresse,showPassword);
+
+        List<List<String>> demandes = DatabaseHandler.ListeDemandeChoix(showIdDemande, showDateDemande, showDateValidation, showIntitule,showStatut, showNomAidee, showPrenomAidee, showNomOrganisation,  showPrenomOrganisation, showMotif);
+        //TODO filter les demandes en fonction de la personneAidee
 
 
 
@@ -60,7 +77,7 @@ public class MesDemandesGUI {
                         new DemandeGUI().createAndShowGUI(personneAidee);
                     }
                 });
-                //new SelectType().createAndShowGUI();
+                //new Views.SelectType().createAndShowGUI();
             }
         });
 
@@ -76,7 +93,7 @@ public class MesDemandesGUI {
                         frame.dispose();
                     }
                 });
-                //new SelectType().createAndShowGUI();
+                //new Views.SelectType().createAndShowGUI();
             }
         });
         frame.add(panelSouth);
@@ -97,5 +114,10 @@ public class MesDemandesGUI {
         }
 
         return array;
+    }
+    public static void main(String[] args) {
+        // Lancement de l'interface graphique
+        PersonneAidee personneAidee = new PersonneAidee("John", "Doe","rue des pins","abba");
+        SwingUtilities.invokeLater(() -> createAndShowGUI(personneAidee));
     }
 }

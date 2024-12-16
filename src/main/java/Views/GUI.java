@@ -1,8 +1,8 @@
+package Views;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
-import java.util.List;
 import javax.swing.*;
 public class GUI {
 
@@ -25,7 +25,7 @@ public class GUI {
                         new LoginPasswordGUI().createAndShowGUI(false,false,false);
                     }
                 });
-                //new SelectType().createAndShowGUI();
+                //new Views.SelectType().createAndShowGUI();
             }
         });
 
@@ -41,7 +41,7 @@ public class GUI {
                         new SelectType().createAndShowGUI();
                     }
                 });
-                //new SelectType().createAndShowGUI();
+                //new Views.SelectType().createAndShowGUI();
             }
         });
 
@@ -55,7 +55,7 @@ public class GUI {
 //                    public void run() {
 //
 //
-//                        new MesDemandesGUI().createAndShowGUI();
+//                        new Views.MesDemandesGUI().createAndShowGUI();
 //                    }
 //                });
 //            }
@@ -71,7 +71,7 @@ public class GUI {
 
     public static void main(String[] args) {
         // Schedule a job for the event-dispatching thread:
-        // creating and showing this application's GUI.
+        // creating and showing this application's Views.GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 createAndShowGUI();

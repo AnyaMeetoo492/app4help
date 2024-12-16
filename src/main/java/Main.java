@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.time.LocalDate;
-import java.sql.Date;
-import java.util.List;
+import App4Help.DatabaseHandler;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,11 +9,11 @@ public class Main {
 
 //        LocalDate spdate = LocalDate.of(2024, 11, 15);
 //        Date date = Date.valueOf(spdate);
-//        Demande demande = new Demande(date, "çA marche", new PersonneAidee("Anya333", "Meetoo333", "6 Allee", "333"));
+//        App4Help.Demande demande = new App4Help.Demande(date, "çA marche", new App4Help.PersonneAidee("Anya333", "Meetoo333", "6 Allee", "333"));
 
         // Ajout d'une personne
-        //List<List<String>> ListePersonne = DatabaseHandler.ListePersonneChoix(true,true, true, true, false);
-        //ist<List<String>> ListePersonne = DatabaseHandler.ListeDemande();
+        //List<List<String>> ListePersonne = App4Help.DatabaseHandler.ListePersonneChoix(true,true, true, true, false);
+        //ist<List<String>> ListePersonne = App4Help.DatabaseHandler.ListeDemande();
 //        for (List<String> personne : ListePersonne){
 //            System.out.println(personne);
 //        }

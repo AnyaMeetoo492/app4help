@@ -1,3 +1,5 @@
+package App4Help;
+
 import java.util.Date;
 
 public class PersonneOrganisation extends Personne{

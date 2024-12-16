@@ -1,3 +1,5 @@
+package Views;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -69,7 +71,7 @@ public class SelectType {
 
     public static void main(String[] args) {
         // Schedule a job for the event-dispatching thread:
-        // creating and showing this application's GUI.
+        // creating and showing this application's Views.GUI.
 
     }
 }

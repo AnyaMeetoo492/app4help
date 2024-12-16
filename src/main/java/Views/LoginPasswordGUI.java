@@ -1,3 +1,10 @@
+package Views;
+
+import App4Help.DatabaseHandler;
+import App4Help.Personne;
+import App4Help.PersonneAidee;
+import App4Help.PersonneBenevole;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,8 +54,8 @@ public class LoginPasswordGUI {
                         new MesDemandesGUI().createAndShowGUI(personneAidee);//affiche les demandes de l'utilisateur aidé
                     }
                     if (isVolunteer){
-                        PersonneAidee personneAidee = new PersonneAidee(firstnameField.getText(),nameField.getText(),user.getAdresse(),String.valueOf(passwordField.getPassword()));
-                        new MesDemandesGUI().createAndShowGUI(personneAidee);//affiche les mission disponibles
+                        PersonneBenevole personneBenevole = new PersonneBenevole(firstnameField.getText(),nameField.getText(),user.getAdresse(),String.valueOf(passwordField.getPassword()));
+                        new MesMissionsGUI().createAndShowGUI(personneBenevole);//affiche les mission disponibles
                     }
                     if (isOrganisation){
                         //affiche les demandes disponibles

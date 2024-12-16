@@ -1,4 +1,4 @@
-import java.util.Date;
+package App4Help;
 
 public class PersonneBenevole extends Personne{
     public PersonneBenevole(String nom, String prenom, String adresse, String password) {
