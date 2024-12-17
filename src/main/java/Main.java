@@ -1,5 +1,4 @@
 import Database.DatabaseHandler;
-import Elements.DatabaseHandler;
 
 public class Main {
     public static void main(String[] args) {
