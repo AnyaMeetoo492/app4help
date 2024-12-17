@@ -1,7 +1,7 @@
 package Views;
 
-import App4Help.Demande;
-import App4Help.Mission;
+import Elements.Demande;
+import Elements.Mission;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

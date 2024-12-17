@@ -1,6 +1,7 @@
-package App4Help;
+package Elements;
 
 import java.util.Date;
+import Database.DatabaseHandler;
 
 public class PersonneOrganisation extends Personne{
     public PersonneOrganisation(String nom, String prenom, String adresse, String password) {

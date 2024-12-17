@@ -1,4 +1,5 @@
-package App4Help;
+package Elements;
+import Database.DatabaseHandler;
 
 public class Personne {
     private String nom;

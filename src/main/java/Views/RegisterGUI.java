@@ -1,10 +1,9 @@
 package Views;
 
-import App4Help.DatabaseHandler;
-import App4Help.PersonneAidee;
-import App4Help.PersonneBenevole;
-import App4Help.PersonneOrganisation;
-import Views.MesDemandesGUI;
+import Database.DatabaseHandler;
+import Elements.PersonneAidee;
+import Elements.PersonneBenevole;
+import Elements.PersonneOrganisation;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

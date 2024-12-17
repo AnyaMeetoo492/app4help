@@ -1,8 +1,7 @@
 package Views;
 
-import App4Help.DatabaseHandler;
-import App4Help.PersonneAidee;
-import Views.DemandeGUI;
+import Database.DatabaseHandler;
+import Elements.PersonneAidee;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

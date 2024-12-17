@@ -1,13 +1,14 @@
-package App4Help;
+package Elements;
 
 import java.util.Date;
+import Database.DatabaseHandler;
 
 public class PersonneAidee extends Personne{
     public PersonneAidee(String nom, String prenom, String adresse, String password) {
         super(nom, prenom, adresse, password);
         // Insérer dans la table App4Help.PersonneAidee
         //TODO aled faut dissocier les inserts partout
-        //App4Help.DatabaseHandler.InsertAidee(nom, prenom, adresse,password);
+        //App4Help.Database.DatabaseHandler.InsertAidee(nom, prenom, adresse,password);
     }
     public void CreerDemande(Date dateDemande, String intitule, PersonneAidee aidee){
         // Créer nouvelle demande et automatiquement rajoute dans table App4Help.Demande

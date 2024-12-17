@@ -1,6 +1,7 @@
-package App4Help;
+package Elements;
 
 import java.util.Date;
+import Database.DatabaseHandler;
 
 public class Mission {
     private int idMission = -1;

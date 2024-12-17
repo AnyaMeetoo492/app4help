@@ -1,12 +1,11 @@
 package Views;
-import App4Help.Demande;
-import App4Help.PersonneAidee;
+import Elements.Demande;
+import Elements.PersonneAidee;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.List;
 
 public class DemandeGUI extends JPanel {
     public DemandeGUI(){

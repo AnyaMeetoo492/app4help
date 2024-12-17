@@ -1,4 +1,5 @@
-import App4Help.DatabaseHandler;
+import Database.DatabaseHandler;
+import Elements.DatabaseHandler;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,8 +13,8 @@ public class Main {
 //        App4Help.Demande demande = new App4Help.Demande(date, "çA marche", new App4Help.PersonneAidee("Anya333", "Meetoo333", "6 Allee", "333"));
 
         // Ajout d'une personne
-        //List<List<String>> ListePersonne = App4Help.DatabaseHandler.ListePersonneChoix(true,true, true, true, false);
-        //ist<List<String>> ListePersonne = App4Help.DatabaseHandler.ListeDemande();
+        //List<List<String>> ListePersonne = App4Help.Database.DatabaseHandler.ListePersonneChoix(true,true, true, true, false);
+        //ist<List<String>> ListePersonne = App4Help.Database.DatabaseHandler.ListeDemande();
 //        for (List<String> personne : ListePersonne){
 //            System.out.println(personne);
 //        }

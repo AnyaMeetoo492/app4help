@@ -1,7 +1,12 @@
+package Database;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import Elements.*;
+
 
 // Classe pour
 // - se connecter à la base de donnée
