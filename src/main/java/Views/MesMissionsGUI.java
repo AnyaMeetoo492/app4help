@@ -17,25 +17,33 @@ public class MesMissionsGUI {
 
         ArrayList<String> listeColumns = new ArrayList<String>(); // Noms des colonnes
 
-        boolean showIdPersonne = false;
-        if (showIdPersonne) listeColumns.add("idPersonne");
+        boolean showIdMission = false;
+        if (showIdMission) listeColumns.add("showIdMission");
+        boolean showDateDebut = true;
+        if (showDateDebut) listeColumns.add("showDateDebut");
+        boolean showDateFin = true;
+        if (showDateFin) listeColumns.add("showDateFin");
+        boolean showIntitule = true;
+        if (showIntitule) listeColumns.add("showIntitule");
+        boolean showStatut = true;
+        if (showStatut) listeColumns.add("showStatut");
 
-        boolean showNom = true;
-        if (showNom) listeColumns.add("nom");
-        boolean showPrenom = true;
-        if (showPrenom) listeColumns.add("prenom");
-        boolean showAdresse = false;
-        if (showAdresse) listeColumns.add("adresse");
-        boolean showPassword = false;
-        if (showPassword) listeColumns.add("password");
+        boolean showNomAidee = false;
+        if (showNomAidee) listeColumns.add("showNomAidee");
+        boolean showPrenomAidee = true;
+        if (showPrenomAidee) listeColumns.add("showPrenomAidee");
+        boolean showNomBenevole = false;
+        if (showNomBenevole) listeColumns.add("showNomBenevole");
+        boolean showPrenomBenevole = false;
+        if (showPrenomBenevole) listeColumns.add("showPrenomBenevole");
         String[] columnNames = listeColumns.toArray(new String[0]);
         DatabaseHandler.connect();
-        List<List<String>> demandes = DatabaseHandler.ListePersonneChoix(showIdPersonne,showNom,showPrenom,showAdresse,showPassword);
-
+        List<List<String>> missions = DatabaseHandler.ListeMissionChoix(showIdMission,showDateDebut,showDateFin,showIntitule,showStatut,showNomAidee,showPrenomAidee,showNomBenevole,showPrenomBenevole);
+        //TODO filter les mission de la personnne
 
 
         //JTable table = new JTable(convertListToArray(demandes),columnNames);
-        DefaultTableModel tableModel = new DefaultTableModel(convertListToArray(demandes), columnNames) {
+        DefaultTableModel tableModel = new DefaultTableModel(convertListToArray(missions), columnNames) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false; // Toutes les cellules sont non modifiables
@@ -65,6 +73,17 @@ public class MesMissionsGUI {
                         frame.dispose();
                     }
                 });
+                //new Views.SelectType().createAndShowGUI();
+            }
+        });
+        JButton newbutton = new JButton("look for new missions");
+        panelSouth.add(quitButton);
+
+        newbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+
                 //new Views.SelectType().createAndShowGUI();
             }
         });
