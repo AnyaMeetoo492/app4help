@@ -14,35 +14,37 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class ShowAllMissionGUI {
+    static PersonneBenevole personneBenevole;
 
-    public ShowAllMissionGUI(){
-
+    public ShowAllMissionGUI(PersonneBenevole personneBenevole){
+        this.personneBenevole = personneBenevole;
     }
-    public static void createAndShowGUI(PersonneBenevole personneBenevole) {
+    public static void createAndShowGUI() {
 
         ArrayList<String> listeColumns = new ArrayList<>(); // Noms des colonnes
 
-        boolean showIdMission = false;
-        if (showIdMission) listeColumns.add("showIdMission");
+        boolean showIdMission = true;
+        if (showIdMission) listeColumns.add("IdMission");
         boolean showDateDebut = true;
-        if (showDateDebut) listeColumns.add("showDateDebut");
+        if (showDateDebut) listeColumns.add("Date Debut");
         boolean showDateFin = true;
-        if (showDateFin) listeColumns.add("showDateFin");
+        if (showDateFin) listeColumns.add("Date Fin");
         boolean showIntitule = true;
-        if (showIntitule) listeColumns.add("showIntitule");
+        if (showIntitule) listeColumns.add("Intitule");
         boolean showStatut = true;
-        if (showStatut) listeColumns.add("showStatut");
+        if (showStatut) listeColumns.add("Statut");
 
         boolean showNomAidee = false;
-        if (showNomAidee) listeColumns.add("showNomAidee");
+        if (showNomAidee) listeColumns.add("Nom Aidee");
         boolean showPrenomAidee = true;
-        if (showPrenomAidee) listeColumns.add("showPrenomAidee");
+        if (showPrenomAidee) listeColumns.add("Prenom Aidee");
         boolean showNomBenevole = false;
-        if (showNomBenevole) listeColumns.add("showNomBenevole");
+        if (showNomBenevole) listeColumns.add("Nom Benevole");
         boolean showPrenomBenevole = false;
-        if (showPrenomBenevole) listeColumns.add("showPrenomBenevole");
+        if (showPrenomBenevole) listeColumns.add("Prenom Benevole");
         listeColumns.add("Accept"); // Ajouter la colonne "Accept"
         String[] columnNames = listeColumns.toArray(new String[0]);
 
@@ -148,10 +150,12 @@ public class ShowAllMissionGUI {
             if (clicked) {
 
                 // Action spécifique au clic sur le bouton
-                int id=table.getSelectedRow();
-                System.out.println("Mission "+ id +" acceptée !");
-                table.getSelectedRows();
-                //TODO obtenir la mission selectionnée dans la liste des missions
+                int row=table.getSelectedRow();
+                int id_mission= (Integer) table.getModel().getValueAt(row, 0);
+                System.out.println("Mission "+ id_mission +" acceptée !");
+                DatabaseHandler.accept(id_mission,personneBenevole);
+                //TODO feedback user
+
 
             }
             clicked = false;
@@ -182,6 +186,6 @@ public class ShowAllMissionGUI {
         // Lancement de l'interface graphique
         DatabaseHandler.connect();
         PersonneBenevole personneBenevole = new PersonneBenevole("John", "Doe","rue des pins","abba");
-        SwingUtilities.invokeLater(() -> createAndShowGUI(personneBenevole));
+        SwingUtilities.invokeLater(() -> createAndShowGUI());
     }
 }

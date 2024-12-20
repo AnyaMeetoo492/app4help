@@ -395,6 +395,11 @@ public class DatabaseHandler {
         return -1;
     }
 
+    public static void accept(int id_mission, PersonneBenevole vol){
+        ChangeBenevoleMission(id_mission, vol);
+        ChangeStatutMission(id_mission,Statut.NON_REALISEE);
+    }
+
     /*
     ================================================
                     LES SELECTS
@@ -431,6 +436,11 @@ public class DatabaseHandler {
         return Liste;
     }
     //TODO : boolean isSeeker(Personne user); boolean isOrganisation(Personne user); boolean isVolunteer(Personne user);
+    //TODO : void validate(Demande demande, PersonneOrganisation orga); -> transforme une demande en mission et insert la mission dans la base de donnée et surtout change le statut de la demande de EN_ATTENTE à validée.
+
+
+
+
 
     public static List<List<String>> ListePersonneChoix(boolean showIdPersonne, boolean showNom, boolean showPrenom, boolean showAdresse, boolean showPassword) {
         List<List<String>> personList = new ArrayList<>();

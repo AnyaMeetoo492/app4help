@@ -18,25 +18,25 @@ public class MesDemandesGUI {
         ArrayList<String> listeColumns = new ArrayList<String>(); // Noms des colonnes
 
         boolean showIdDemande = false;
-        if (showIdDemande) listeColumns.add("showIdDemande");
+        if (showIdDemande) listeColumns.add("IdDemande");
         boolean showDateDemande = true;
-        if (showDateDemande) listeColumns.add("showDateDemande");
+        if (showDateDemande) listeColumns.add("Date Demande");
         boolean showDateValidation = false;
-        if (showDateValidation) listeColumns.add("showDateValidation");
+        if (showDateValidation) listeColumns.add("Date Validation");
         boolean showIntitule = true;
-        if (showIntitule) listeColumns.add("showIntitule");
+        if (showIntitule) listeColumns.add("Intitule");
         boolean showNomAidee = true;
-        if (showNomAidee) listeColumns.add("showNomAidee");
+        if (showNomAidee) listeColumns.add("Nom Aidee");
         boolean showPrenomAidee = true;
-        if (showPrenomAidee) listeColumns.add("showPrenomAidee");
+        if (showPrenomAidee) listeColumns.add("Prenom Aidee");
         boolean showStatut = false;
-        if (showStatut) listeColumns.add("showStatut");
+        if (showStatut) listeColumns.add("Statut");
         boolean showNomOrganisation = false;
-        if (showNomOrganisation) listeColumns.add("showNomOrganisation");
+        if (showNomOrganisation) listeColumns.add("Nom Valideur");
         boolean showPrenomOrganisation = false;
-        if (showPrenomOrganisation) listeColumns.add("showPrenomOrganisation");
+        if (showPrenomOrganisation) listeColumns.add("Prenom Valideur");
         boolean showMotif = false;
-        if (showMotif) listeColumns.add("showMotif");
+        if (showMotif) listeColumns.add("Motif");
 
         String[] columnNames = listeColumns.toArray(new String[0]);
         DatabaseHandler.connect();

@@ -33,6 +33,10 @@ public class LoginPasswordGUI {
         JButton validateButton = new JButton("Validate");
         panel.add(validateButton);
 
+
+        JLabel errorField = new JLabel("");
+        panel.add(errorField);
+        errorField.setVisible(true);
         // Ajout du panel au frame
         frame.add(panel);
 
@@ -42,7 +46,7 @@ public class LoginPasswordGUI {
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                errorField.setVisible(false);
                 DatabaseHandler.connect();
                 if (DatabaseHandler.isInDatabase(firstnameField.getText(),nameField.getText(),String.valueOf(passwordField.getPassword()))){
                     frame.dispose();
@@ -62,7 +66,9 @@ public class LoginPasswordGUI {
                     }
                 }
                 else {
-                    //printf
+                    errorField.setText("this profile doesn't exist");
+                    errorField.setVisible(true);
+                    frame.pack();
                 }
 
             }
